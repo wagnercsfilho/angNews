@@ -1,0 +1,12 @@
+<div class="auth-forms"  style="padding: 20px;">
+
+  <h2>Log In</h2>
+
+  <form ng-submit="login()">
+    <p ng-show="error" class="text-danger"></p>
+    <md-text-float label="Email" ng-model="user.email"  > </md-text-float>
+    <md-text-float label="Password" ng-model="user.password"  > </md-text-float>
+    <input type="submit" value="Log in" class="btn btn-primary" />
+  </form>
+
+</div>

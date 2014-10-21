@@ -18,7 +18,8 @@ var app = angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'firebase'
+    'firebase',
+    'ngMaterial'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -26,9 +27,35 @@ var app = angular
         templateUrl: 'views/posts.html',
         controller: 'PostsCtrl'
       })
+      .when('/posts/:postId', {
+        templateUrl: 'views/showpost.html',
+        controller: 'PostViewCtrl'
+      })
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'AuthCtrl',
+        resolve: {
+          user: function(Auth) {
+            return Auth.resolveUser();
+          }
+        }
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'AuthCtrl',
+        resolve: {
+          user: function(Auth) {
+            return Auth.resolveUser();
+          }
+        }
+      })
+      .when('/users/:userId', {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
   })
-  .constant('FIREBASE_URL', 'https://vote2014.firebaseio.com/');
+  .constant('FIREBASE_URL', 'https://cariocanews.firebaseio.com/');
 

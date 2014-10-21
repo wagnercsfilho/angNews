@@ -8,17 +8,10 @@
  * Controller of the angNewsApp
  */
 angular.module('angNewsApp')
-  .controller('PostsCtrl', function ($scope, Post) {
+  .controller('PostsCtrl', function ($scope, $location, Post, Auth) {
 
 		 $scope.posts = Post.all;
-
-		  $scope.post = {url: 'http://', 'title': ''};
-
-		  $scope.submitPost = function () {
-		    Post.create($scope.post).then(function () {
-		      $scope.post = {url: 'http://', 'title': ''};
-		    });
-		  };
+		 $scope.user = Auth.user;
 
 		  $scope.deletePost = function (post) {
 		    Post.delete(post);

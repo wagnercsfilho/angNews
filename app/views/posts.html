@@ -1,12 +1,43 @@
-<div ng-repeat="post in posts">
-  <a ng-href="{{ post.url }}">{{ post.title }}</a>
-  <a ng-click="deletePost(post)">delete</a>
-</div>
+<md-list>
 
-<form ng-submit="submitPost()">
-  <input type="text" ng-model="post.title" />
-  <input type="text" ng-model="post.url" />
-  <input type="submit" value="Add Post" />
-</form>
-Posts: {{ posts }}<br />
-Post: {{ post }}
+      <md-item ng-repeat="post in posts">
+        <md-item-content>
+          <div class="md-tile-left">
+            <div >
+              <img ng-if="post.thumbnail" ng-src="{{post.thumbnail}}" class="face">
+            </div>
+          </div>
+          <div class="md-tile-content">
+            <h3>{{post.title}}</h3>
+            <h4>{{post.subtitle}}</h4>
+            <p>
+              {{post.site}}
+            </p>
+          </div>
+        </md-item-content>
+      </md-item>
+
+</md-list>
+
+
+<!--<div class="container posts-page">
+  <div class="post row" ng-repeat="post in posts">
+    <div class="col-xs-1">
+    </div>
+    <div class="col-md-9 col-xs-11">
+
+      <div class="info">
+		  <a ng-href="{{ post.url }}">
+		    {{ post.title }}
+		    <span class="url">({{ post.url | hostnameFromUrl }})</span>
+		  </a>
+	  </div>
+      <div>
+        <span>submitted by <a ng-href="#/users/{{ post.creatorUID }}">{{ post.creator }}</a></span>
+        &mdash;
+        <a ng-href="#/posts/{{ post.$id }}">comments</a>
+        <a ng-click="deletePost(post)" ng-show="user.uid === post.creatorUID">delete</a>
+      </div>
+    </div>
+  </div>
+</div>-->

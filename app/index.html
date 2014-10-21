@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -20,22 +21,28 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">angNews</h3>
-      </div>
+    <div ng-controller="NavCtrl" layout="vertical">
 
-      <div ng-view=""></div>
+        <!-- Add your site or application content here -->
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2" component-id="left">
 
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
+          <md-toolbar class="md-theme-light">
+            <h1 class="md-toolbar-tools">Sidenav Right</h1>
+          </md-toolbar>
+          <md-content class="md-content-padding">
+            <md-button ng-click="close()" class="md-button-colored">
+              Close Sidenav Right
+            </md-button>
+          </md-content>
+
+        </md-sidenav>
+
+        <md-content>
+            <div ng-include="'views/nav.html'"></div>
+
+            <div ng-view=""></div>
+        </md-content>
+    
     </div>
 
 
@@ -72,13 +79,23 @@
     <script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
     <script src="bower_components/mockfirebase/dist/mockfirebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/hammerjs/hammer.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/posts.js"></script>
+        <script src="scripts/controllers/postview.js"></script>
+        <script src="scripts/controllers/profile.js"></script>
+        <script src="scripts/controllers/nav.js"></script>
         <script src="scripts/services/post.js"></script>
+        <script src="scripts/filters/url.js"></script>
+        <script src="scripts/controllers/auth.js"></script>
+        <script src="scripts/services/auth.js"></script>
+        <script src="scripts/services/profile.js"></script>
 
         <!-- endbuild -->
 </body>
